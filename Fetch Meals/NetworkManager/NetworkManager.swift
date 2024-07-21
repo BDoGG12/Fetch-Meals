@@ -13,15 +13,18 @@ class NetworkManager {
     
     //MARK: - Fetch meals
     func fetchMeals() async throws -> [Meals] {
-        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert")
+        
+        let urlStr = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
+        guard let url = URL(string: urlStr) else {
+            throw URLError(.badURL)
+        }
         
         // Get Request
-        let (data, _) = try await URLSession.shared.data(from: url!)
+        let (data, _) = try await URLSession.shared.data(from: url)
         
-        let mealsRes = try JSONDecoder().decode([Meals].self, from: data)
-        print("Meals Response: \(mealsRes)")
-
-        return mealsRes
+        let mealsRes = try JSONDecoder().decode(MealsResponse.self, from: data)
+        
+        return mealsRes.meals
     }
     
     //MARK: - Fetch meal details
@@ -33,9 +36,9 @@ class NetworkManager {
         // Get Request
         let (data, _) = try await URLSession.shared.data(from: url!)
         
-        let mealsRes = try JSONDecoder().decode([MealsDetail].self, from: data)
+        let mealsRes = try JSONDecoder().decode(MealsDetailResponse.self, from: data)
         print("Meals Response: \(mealsRes)")
-
-        return mealsRes
+        
+        return mealsRes.meals
     }
 }
