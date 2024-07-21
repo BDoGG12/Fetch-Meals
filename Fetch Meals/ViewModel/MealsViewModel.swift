@@ -14,21 +14,22 @@ class MealsViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     // fetch meals
-    func fetchMeals() {
-        isLoading = true
-        errorMessage = ""
-        
-        Task {
-            do {
-                let fetchedMeals = try await NetworkManager.shared.fetchMeals()
-                DispatchQueue.main.async { [self] in
-                    meals = fetchedMeals
-                    isLoading = false
-                }
-            } catch {
-                isLoading = true
-                errorMessage = error.localizedDescription
+    func loadMeals() async {
+        do {
+            let fetchedMeals = try await fetchMealsFromAPI()
+            DispatchQueue.main.async {
+                self.meals = fetchedMeals
+                print("Fetched Meals: \(self.meals)")
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.errorMessage = error.localizedDescription
             }
         }
+    }
+    
+    private func fetchMealsFromAPI() async throws -> [Meals] {
+        var fetchedMeals = try await NetworkManager.shared.fetchMeals()
+        return fetchedMeals
     }
 }
