@@ -37,7 +37,6 @@ class NetworkManager {
         let (data, _) = try await URLSession.shared.data(from: url!)
         
         let mealsRes = try JSONDecoder().decode(MealsDetailResponse.self, from: data)
-        print("Meals Response: \(mealsRes)")
         
         return mealsRes.meals
     }
