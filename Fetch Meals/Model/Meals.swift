@@ -7,8 +7,16 @@
 
 import Foundation
 
-struct Meals: Codable {
-    var id: String
-    var meal: String
-    var thumbnail: String
+struct Meals: Codable, Identifiable {
+    var strMeal: String
+    var strMealThumb: String
+    var idMeal: String
+    
+    var id: String {
+        idMeal
+    }
+}
+
+struct MealsResponse: Codable {
+    var meals: [Meals]
 }
