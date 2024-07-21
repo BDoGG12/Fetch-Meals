@@ -19,6 +19,7 @@
 		D4B08EC92C494E9C000E3112 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B08EC82C494E9C000E3112 /* NetworkManager.swift */; };
 		D4B08ECB2C495143000E3112 /* MealsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B08ECA2C495143000E3112 /* MealsViewModel.swift */; };
 		D4B08EF42C4AB4F0000E3112 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B08EF32C4AB4F0000E3112 /* MainView.swift */; };
+		D4B08EF62C4ABF2D000E3112 /* MealsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B08EF52C4ABF2D000E3112 /* MealsRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		D4B08EC82C494E9C000E3112 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D4B08ECA2C495143000E3112 /* MealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewModel.swift; sourceTree = "<group>"; };
 		D4B08EF32C4AB4F0000E3112 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D4B08EF52C4ABF2D000E3112 /* MealsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D4B08EC32C481435000E3112 /* MealsView.swift */,
+				D4B08EF52C4ABF2D000E3112 /* MealsRowView.swift */,
 				D4B08EC52C481469000E3112 /* MealsDetailView.swift */,
 				D4B08EF32C4AB4F0000E3112 /* MainView.swift */,
 			);
@@ -196,6 +199,7 @@
 				D4B08EAF2C4788FF000E3112 /* Fetch_MealsView.swift in Sources */,
 				D4B08EBB2C47895F000E3112 /* Documentation.docc in Sources */,
 				D4B08EC62C481469000E3112 /* MealsDetailView.swift in Sources */,
+				D4B08EF62C4ABF2D000E3112 /* MealsRowView.swift in Sources */,
 				D4B08EF42C4AB4F0000E3112 /* MainView.swift in Sources */,
 				D4B08EC02C480424000E3112 /* MealsDetail.swift in Sources */,
 				D4B08EC92C494E9C000E3112 /* NetworkManager.swift in Sources */,
