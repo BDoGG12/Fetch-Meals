@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Meals: Codable, Identifiable {
+struct Meals: Codable, Identifiable, Equatable {
     var strMeal: String
     var strMealThumb: String
     var idMeal: String
