@@ -9,8 +9,8 @@ import Foundation
 
 class DataService {
     
-    func makeInstructions(detail: MealsDetail?) -> String {
-        return detail?.instructions.replacingOccurrences(of: "\r\n", with: "\n") ?? ""
+    func makeInstructions(detailInstructions: String) -> String {
+        return detailInstructions.replacingOccurrences(of: "\r\n", with: "\n") 
     }
     
     func makeIngredientsAndMeasurements(detail: MealsDetail?) -> String {
