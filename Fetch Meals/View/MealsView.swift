@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MealsView: View {
-    @StateObject var viewModel = MealsViewModel()
+    @StateObject var viewModel = MealsViewModel(networkManager: NetworkManager.shared)
     @State var meals: [Meals] = []
     @State var error: Error?
     
