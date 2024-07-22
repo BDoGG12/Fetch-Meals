@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MealsDetailView: View {
     @State var id: String
-    @StateObject var viewModel = MealsDetailViewModel()
+    @StateObject var viewModel = MealsDetailViewModel(networkManager: NetworkManager.shared)
     @State var ingredients = ""
     @State var instructions = ""
     var service = DataService()
@@ -49,7 +49,7 @@ struct MealsDetailView: View {
         }
         .task {
             await viewModel.loadMealDetail(id: id)
-            instructions = service.makeInstructions(detail: viewModel.details.first)
+            instructions = service.makeInstructions(detailInstructions: viewModel.details.first?.instructions ?? "")
             ingredients = service.makeIngredientsAndMeasurements(detail: viewModel.details.first)
         }
     }
