@@ -31,7 +31,7 @@ class MealsDetailViewModel: ObservableObject {
     
     func fetchMealDetailAPI(id: String) async throws -> [MealsDetail] {
         
-        var mealDetail = try await NetworkManager.shared.fetchMealDetails(id: id)
+        let mealDetail = try await NetworkManager.shared.fetchMealDetails(id: id)
         return mealDetail
     }
     
