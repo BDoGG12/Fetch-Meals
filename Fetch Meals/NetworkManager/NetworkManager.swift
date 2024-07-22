@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol NetworkManagerProtocol {
+    func fetchMeals() async throws -> [Meals]
+    func fetchMealDetails(id: String) async throws -> [MealsDetail]
+}
+
 class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
