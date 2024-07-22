@@ -24,6 +24,7 @@ struct MealsRowView: View {
                 .foregroundStyle(.primary)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
+                .foregroundStyle(.black)
             Spacer()
         }
         .padding(.vertical, 8)
