@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MealsDetail: Codable {
+struct MealsDetail: Codable, Equatable, Identifiable {
     var idMeal: String
     var meal: String
     var category: String
@@ -59,7 +59,7 @@ struct MealsDetail: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-            case idMeal
+            case idMeal = "idMeal"
             case meal = "strMeal"
             case category = "strCategory"
             case instructions = "strInstructions"
@@ -110,4 +110,8 @@ struct MealsDetail: Codable {
 
 struct MealsDetailResponse: Codable {
     var meals: [MealsDetail]
+    
+    enum CodingKeys: String, CodingKey {
+        case meals = "meals"
+    }
 }
