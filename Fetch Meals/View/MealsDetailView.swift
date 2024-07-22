@@ -15,32 +15,36 @@ struct MealsDetailView: View {
     var service = DataService()
     var body: some View {
         VStack {
-            ScrollView {
-                if let imageUrl = URL(string: viewModel.details.first?.mealThumbnail ?? "") {
-                    AsyncImage(url: imageUrl) { image in
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        ProgressView()
+            if viewModel.details.isEmpty {
+                Text("Loading...")
+            } else {
+                ScrollView {
+                    if let imageUrl = URL(string: viewModel.details.first?.mealThumbnail ?? "") {
+                        AsyncImage(url: imageUrl) { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(height: 200)
                     }
-                    .frame(height: 200)
+                    Text(viewModel.details.first?.meal ?? "")
+                        .padding()
+                        .font(.title)
+                    Text("Instructions")
+                        .padding()
+                        .font(.title2)
+                    Text(instructions)
+                        .padding()
+                    
+                    Spacer()
+                    
+                    Text("Ingredients")
+                        .padding(.bottom)
+                        .font(.title2)
+                    Text(ingredients)
+                        .padding(.bottom)
                 }
-                Text(viewModel.details.first?.meal ?? "")
-                    .padding()
-                    .font(.title)
-                Text("Instructions")
-                    .padding()
-                    .font(.title2)
-                Text(instructions)
-                    .padding()
-                
-                Spacer()
-                
-                Text("Ingredients")
-                    .padding(.bottom)
-                    .font(.title2)
-                Text(ingredients)
-                    .padding(.bottom)
             }
         }
         .task {
