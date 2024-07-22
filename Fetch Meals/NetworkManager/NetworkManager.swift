@@ -7,9 +7,11 @@
 
 import Foundation
 
-class NetworkManager {
+class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
+    
+    private init() {}
     
     //MARK: - Fetch meals
     func fetchMeals() async throws -> [Meals] {
