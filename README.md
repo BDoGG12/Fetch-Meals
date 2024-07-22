@@ -88,7 +88,7 @@ The app includes error handling to manage network issues and display appropriate
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fetch-meals.git
+   git clone [https://github.com/yourusername/fetch-meals.git](https://github.com/BDoGG12/Fetch-Meals.git)
 
 2. Open the project in Xcode:
    open FetchMeals.xcodeproj
