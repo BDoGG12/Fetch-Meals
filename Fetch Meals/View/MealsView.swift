@@ -20,7 +20,11 @@ struct MealsView: View {
                 } else {
                     ScrollView {
                         ForEach (viewModel.meals) { meal in
-                            MealsRowView(meal: meal)
+                            NavigationLink {
+                                MealsDetailView(id: meal.idMeal)
+                            } label: {
+                                MealsRowView(meal: meal)
+                            }
                         }
                     }
                 }
