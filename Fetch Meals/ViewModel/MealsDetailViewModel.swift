@@ -13,6 +13,12 @@ class MealsDetailViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
+    private var networkManager: NetworkManagerProtocol
+    
+    init(networkManager: NetworkManagerProtocol = NetworkManager.shared) {
+        self.networkManager = networkManager
+    }
+    
     func loadMealDetail(id: String) async {
         
         do {
@@ -31,7 +37,7 @@ class MealsDetailViewModel: ObservableObject {
     
     func fetchMealDetailAPI(id: String) async throws -> [MealsDetail] {
         
-        let mealDetail = try await NetworkManager.shared.fetchMealDetails(id: id)
+        let mealDetail = try await networkManager.fetchMealDetails(id: id)
         return mealDetail
     }
     

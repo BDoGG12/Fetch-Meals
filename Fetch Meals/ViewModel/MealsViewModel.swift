@@ -13,13 +13,18 @@ class MealsViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
     
+    private let networkManager: NetworkManagerProtocol
+    
+    init(networkManager: NetworkManagerProtocol = NetworkManager.shared) {
+        self.networkManager = networkManager
+    }
+    
     // fetch meals
     func loadMeals() async {
         do {
             let fetchedMeals = try await fetchMealsFromAPI()
             DispatchQueue.main.async {
                 self.meals = fetchedMeals
-                print("Fetched Meals: \(self.meals)")
             }
         } catch {
             DispatchQueue.main.async {
@@ -29,7 +34,7 @@ class MealsViewModel: ObservableObject {
     }
     
     private func fetchMealsFromAPI() async throws -> [Meals] {
-        var fetchedMeals = try await NetworkManager.shared.fetchMeals()
+        let fetchedMeals = try await networkManager.fetchMeals()
         return fetchedMeals
     }
 }
