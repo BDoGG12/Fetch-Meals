@@ -13,9 +13,9 @@ class MealsDetailViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
-    private var networkManager: NetworkManagerProtocol
+    var networkManager: NetworkManagerProtocol!
     
-    init(networkManager: NetworkManagerProtocol = NetworkManager.shared) {
+    init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
     }
     
