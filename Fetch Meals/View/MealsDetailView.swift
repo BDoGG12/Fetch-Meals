@@ -9,9 +9,45 @@ import SwiftUI
 
 struct MealsDetailView: View {
     @State var id: String
-    
+    @StateObject var viewModel = MealsDetailViewModel()
+    @State var ingredients = ""
+    @State var instructions = ""
+    var service = DataService()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ScrollView {
+                if let imageUrl = URL(string: viewModel.details.first?.mealThumbnail ?? "") {
+                    AsyncImage(url: imageUrl) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(height: 200)
+                }
+                Text(viewModel.details.first?.meal ?? "")
+                    .padding()
+                    .font(.title)
+                Text("Instructions")
+                    .padding()
+                    .font(.title2)
+                Text(instructions)
+                    .padding()
+                
+                Spacer()
+                
+                Text("Ingredients")
+                    .padding(.bottom)
+                    .font(.title2)
+                Text(ingredients)
+                    .padding(.bottom)
+            }
+        }
+        .task {
+            await viewModel.loadMealDetail(id: id)
+            instructions = service.makeInstructions(detail: viewModel.details.first)
+            ingredients = service.makeIngredientsAndMeasurements(detail: viewModel.details.first)
+        }
     }
 }
 
